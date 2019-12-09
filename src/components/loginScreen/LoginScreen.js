@@ -39,9 +39,9 @@ class LoginScreen extends Component {
 
   render() {
     const { auth, authError } = this.props;
-    /*if (auth.uid) {
+    if (auth.uid) {
       return <Redirect to="/" />;
-    }*/
+    }
 
     return (
       <div className="container">
@@ -63,7 +63,7 @@ class LoginScreen extends Component {
           </form>
 
           <div className="col s8 banner">
-            Wireframer&#8482;<br />
+            Wireframer&trade;<br />
           </div>
         </div>
       </div>
