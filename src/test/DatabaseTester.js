@@ -20,12 +20,6 @@ class DatabaseTester extends React.Component {
                 fireStore.collection('diagrams').doc(doc.id).delete();
             })
         });
-        fireStore.collection('users').get().then(function(querySnapshot){
-            querySnapshot.forEach(function(doc) {
-                console.log("deleting " + doc.id);
-                fireStore.collection('users').doc(doc.id).delete();
-            })
-        });
     }
 
     handleReset = () => {
@@ -43,16 +37,7 @@ class DatabaseTester extends React.Component {
                     console.log(err);
                 });
         });
-        testJson.users.forEach(userJson => {
-            const { firebase } = this.props;
-            console.log(firebase);
-            const newUser = {email: userJson.email,
-                password: userJson.password,
-                firstName: userJson.firstName,
-                lastName: userJson.lastName,
-                diagrams: userJson.diagrams}
-            this.props.register(newUser, firebase);
-        });
+
     }
 
     render() {

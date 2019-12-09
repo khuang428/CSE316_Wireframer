@@ -123,20 +123,5 @@
 				"borderRadius": 2
 			}
 		]
-	}],
-	"users":[{
-			"email": "abc123@test.com",
-			"password": "abc123",
-			"firstName": "Foo",
-			"lastName": "Bar",
-			"diagrams": [0,2]
-		},
-		{
-			"email": "bobiscool@test.com",
-			"password": "iamthecoolest9000",
-			"firstName": "Bob",
-			"lastName": "Coolington",
-			"diagrams": [1]
-		}
-	]
+	}]
 }
