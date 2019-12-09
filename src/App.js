@@ -4,9 +4,10 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 
-import Navbar from './components/navbar/Navbar'
+import Navbar from './components/navbar/Navbar';
 import DatabaseTester from './test/DatabaseTester';
-import LoginScreen from './components/loginScreen/LoginScreen.js';
+import LoginScreen from './components/loginScreen/LoginScreen';
+import HomeScreen from './components/homeScreen/HomeScreen';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Switch>
+              <Route exact path="/" component={HomeScreen} />
               <Route path="/login" component={LoginScreen} />
               <Route path="/databaseTester" component={DatabaseTester} />
             </Switch>
