@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 
 import DatabaseTester from './test/DatabaseTester';
+import LoginScreen from './components/loginScreen/LoginScreen.js';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             <Switch>
+              <Route path="/login" component={LoginScreen} />
               <Route path="/databaseTester" component={DatabaseTester} />
             </Switch>
           </div>
