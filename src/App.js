@@ -4,7 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 
-
+import DatabaseTester from './test/DatabaseTester';
 
 class App extends Component {
   render() {
@@ -16,9 +16,8 @@ class App extends Component {
       return (
         <BrowserRouter>
           <div className="App">
-            <Navbar />
             <Switch>
-
+              <Route path="/databaseTester" component={DatabaseTester} />
             </Switch>
           </div>
         </BrowserRouter>
