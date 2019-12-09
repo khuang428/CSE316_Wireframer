@@ -1,0 +1,142 @@
+{
+	"diagrams":[{
+		"key": 0,
+		"name": "Test Diagram",
+		"height": 400,
+		"width": 600,
+		"controls": [{
+				"position": [50,50],
+				"width": 50,
+				"height": 20,
+				"type": "label",
+				"text": "Testing 123",
+				"fontSize": 12,
+				"textColor": "#000000",
+				"backgroundColor": "ffffff",
+				"borderColor": "#000000",
+				"borderThickness": 1,
+				"borderRadius": 0
+			},
+			{
+				"position": [50,100],
+				"width": 50,
+				"height": 20,
+				"type": "container",
+				"text": "",
+				"fontSize": 12,
+				"textColor": "#000000",
+				"backgroundColor": "#efefef",
+				"borderColor": "#ab1200",
+				"borderThickness": 2,
+				"borderRadius": 10
+			}
+		]
+	},
+	{
+		"key": 1,
+		"name": "Bob's Cool Homepage",
+		"height": 1080,
+		"width": 1920,
+		"controls" :[{
+				"position": [860,0],
+				"width": 200,
+				"height": 50,
+				"type": "label",
+				"text": "Welcome to my Cool Homepage",
+				"fontSize": 30,
+				"textColor": "#0000ff",
+				"backgroundColor": "#ffffff",
+				"borderColor": "#ffffff",
+				"borderThickness": 0,
+				"borderRadius": 0
+			},
+			{
+				"position": [0,100],
+				"width": 50,
+				"height": 20,
+				"type": "textfield",
+				"text": "Who is the coolest?",
+				"fontSize": 12,
+				"textColor": "#efefef",
+				"backgroundColor": "#ffffff",
+				"borderColor": "#000000",
+				"borderThickness": 2,
+				"borderRadius": 0
+			},
+			{
+				"position": [0,130],
+				"width": 50,
+				"height": 20,
+				"type": "button",
+				"text": "Submit",
+				"fontSize": 12,
+				"textColor": "#000000",
+				"backgroundColor": "#efefef",
+				"borderColor": "#000000",
+				"borderThickness": 2,
+				"borderRadius": 2
+			}
+		]
+	},
+	{
+		"key": 2,
+		"name": "My Wireframe App",
+		"height": 750,
+		"width": 750,
+		"controls": [{
+				"position": [0,0],
+				"width": 150,
+				"height": 750,
+				"type": "container",
+				"text": "",
+				"fontSize": 12,
+				"textColor": "#000000",
+				"backgroundColor": "#ffffff",
+				"borderColor": "#000000",
+				"borderThickness": 1,
+				"borderRadius": 0
+			},
+			{
+				"position": [200,0],
+				"width": 350,
+				"height": 750,
+				"type": "container",
+				"text": "",
+				"fontSize": 12,
+				"textColor": "#000000",
+				"backgroundColor": "#ffffff",
+				"borderColor": "#000000",
+				"borderThickness": 1,
+				"borderRadius": 0
+			},
+			{
+				"position": [150,0],
+				"width": 50,
+				"height": 20,
+				"type": "label",
+				"text": "W1r3fr4m3r TM",
+				"fontSize": 12,
+				"textColor": "#ffffff",
+				"backgroundColor": "#cccc00",
+				"borderColor": "#000000",
+				"borderThickness": 2,
+				"borderRadius": 2
+			}
+		]
+	}],
+	"users":[{
+			"email": "abc123@test.com",
+			"password": "abc123",
+			"firstName": "Foo",
+			"lastName": "Bar",
+			"diagrams": [0,2]
+		},
+		{
+			"email": "bobiscool@test.com",
+			"password": "iamthecoolest9000",
+			"firstName": "Bob",
+			"lastName": "Coolington",
+			"diagrams": [1]
+		}
+	]
+}
