@@ -4,6 +4,7 @@
 		"name": "Test Diagram",
 		"height": 400,
 		"width": 600,
+		"owner": "54IhImfFsqXqJ1T3HnKQVb7rLLD2",
 		"controls": [{
 				"position": [50,50],
 				"width": 50,
@@ -37,6 +38,7 @@
 		"name": "Bob's Cool Homepage",
 		"height": 1080,
 		"width": 1920,
+		"owner": "TTrOwOfFmESi9zpp8GVmaKn0jJi2",
 		"controls" :[{
 				"position": [860,0],
 				"width": 200,
@@ -83,6 +85,7 @@
 		"name": "My Wireframe App",
 		"height": 750,
 		"width": 750,
+		"owner": "54IhImfFsqXqJ1T3HnKQVb7rLLD2",
 		"controls": [{
 				"position": [0,0],
 				"width": 150,

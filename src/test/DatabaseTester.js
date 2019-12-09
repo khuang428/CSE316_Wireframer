@@ -27,10 +27,11 @@ class DatabaseTester extends React.Component {
         testJson.diagrams.forEach(diagramJson => {
             fireStore.collection('diagrams').add({
                     name: diagramJson.name,
+                    owner: diagramJson.owner,
                     height: diagramJson.height,
                     width: diagramJson.width,
-                    controls: diagramJson.controls,
-                    time_updated: new Date().getTime()
+                    timeUpdated: new Date().getTime(),
+                    controls: diagramJson.controls,      
                 }).then(() => {
                     console.log("DATABASE RESET");
                 }).catch((err) => {

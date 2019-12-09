@@ -4,7 +4,7 @@ body {
 
 div.banner {
     background-image: linear-gradient(to bottom,         
-    #e0e0e0, #616161);
+    #616161, #e0e0e0);
     color: white;
     font-size: 48pt;
     border-color: black;
