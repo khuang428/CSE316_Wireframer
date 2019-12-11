@@ -8,6 +8,21 @@ import { getFirestore } from 'redux-firestore';
 
 
 class HomeScreen extends Component {
+    handleNewDiagram = () =>{
+        //default name "New Diagram"
+        //default size 700x500
+        const fireStore = getFirestore();
+        fireStore.collection('diagrams').add({
+            name : 'New Diagram',
+            owner: this.props.auth.uid,
+            timeUpdated: new Date().getTime(),
+            height: 500,
+            width: 700,
+            controls:[]
+        }).then(ref => {
+            this.props.history.push('/edit/'+ref.id);
+        });
+    }
 
     render() {
         if (!this.props.auth.uid) {
@@ -29,7 +44,7 @@ class HomeScreen extends Component {
                     </div>
                     
                     <div className="center">
-                            <button className="blue-grey white-text waves-effect waves-light btn-large create-btn">
+                            <button className="blue-grey white-text waves-effect waves-light btn-large create-btn" onClick ={this.handleNewDiagram}>
                                 Create New Wireframe Diagram
                             </button>
                     </div>
