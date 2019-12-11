@@ -64,8 +64,8 @@ form div{
 }
 
 .wireframe-display{
-  margin: 0 auto;
-    
+  position:relative;
+  transform-origin: top left;
 }
 
 .control-container, .control-label, .control-textfield, .control-button{

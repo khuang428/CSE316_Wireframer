@@ -25,6 +25,10 @@ class EditScreen extends Component{
     this.setState({name: e.target.value, hasChanged: true});
   }
 
+  handleZoom = (multiplier) => {
+    this.setState({zoom: this.state.zoom*multiplier});
+  }
+
   handleDimensionChange = (e) =>{
     let dimension = parseInt(e.target.value);
     if(dimension < 1){
@@ -53,8 +57,12 @@ class EditScreen extends Component{
           <div className = "row">
             <div className = "col s3 left util-bar">
               <div className = "card diagram-controls">
-                <Button><i className="material-icons zoom-btn">zoom_in</i></Button>&nbsp;
-                <Button><i className="material-icons zoom-btn">zoom_out</i></Button>&nbsp;
+                {this.state.zoom == 4 ? <Button className = "disabled" onClick = {() => this.handleZoom(2.0)}><i className="material-icons zoom-btn">zoom_in</i></Button>
+                                      : <Button onClick = {() => this.handleZoom(2.0)}><i className="material-icons zoom-btn">zoom_in</i></Button>}
+                &nbsp;
+                {this.state.zoom == 0.25 ? <Button className = "disabled" onClick = {() => this.handleZoom(0.5)}><i className="material-icons zoom-btn">zoom_out</i></Button>
+                                      : <Button onClick = {() => this.handleZoom(0.5)}><i className="material-icons zoom-btn">zoom_out</i></Button>}
+                &nbsp;
                 <Button>Save</Button>&nbsp;
                 <Button>Close</Button>
               </div>
@@ -71,7 +79,7 @@ class EditScreen extends Component{
               </div>
             </div>
             <div className = "col s6 wireframe-container">
-              <div className = "wireframe-display" style = {{height: this.state.height, width: this.state.width}}>
+              <div className = "wireframe-display" style = {{height: this.state.height, width: this.state.width, transform: "scale("+this.state.zoom +")"}}>
                 
               {this.state.controls.map(control => (
                 <Control control = {control}></Control>
