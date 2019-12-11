@@ -55,3 +55,17 @@ html {
     color: #42a5f5  !important;
   }
   
+  .delete-list{
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .create-button{
+    margin-top: 20px;
+    text-transform: none!important;
+    font-size: 30px;
+    font-weight:thin;
+  }
+  .home-header{
+    font-size: 40px;
+  }

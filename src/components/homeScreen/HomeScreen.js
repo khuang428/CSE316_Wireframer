@@ -18,6 +18,8 @@ class HomeScreen extends Component {
         <div className="dashboard container">
             <div className="row">
                 <div className="col s12 m4">
+                    <br></br>
+                    <span className = "home-header">Recent Work</span>
                     <DiagramLinks />
                 </div>
 
@@ -27,7 +29,7 @@ class HomeScreen extends Component {
                     </div>
                     
                     <div className="center">
-                            <button className="blue-grey white-text waves-effect waves-light btn-large">
+                            <button className="blue-grey white-text waves-effect waves-light btn-large create-button">
                                 Create New Wireframe Diagram
                             </button>
                     </div>
@@ -47,6 +49,6 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-      {collection: 'diagrams'},
+      {collection: 'diagrams', orderBy: ['timeUpdated', 'desc']},
     ]),
 )(HomeScreen);

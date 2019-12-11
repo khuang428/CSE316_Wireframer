@@ -1,13 +1,14 @@
 {
-  "name": "todo_hw3",
+  "name": "wireframer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classnames": "^2.2.6",
     "firebase": "^7.2.2",
     "moment": "^2.24.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-materialize": "^3.4.1",
+    "react-materialize": "^3.5.7",
     "react-moment": "^0.9.6",
     "react-redux": "^7.1.1",
     "react-redux-firebase": "^3.0.3",
