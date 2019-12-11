@@ -68,6 +68,11 @@ form div{
   transform-origin: top left;
 }
 
-.control-container, .control-label, .control-textfield, .control-button{
+.control{
   position: relative;
+  cursor: pointer;
+}
+
+.control-properties-header{
+  margin: 10px 0;
 }

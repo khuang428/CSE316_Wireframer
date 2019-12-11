@@ -50,3 +50,7 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
 .wireframe-container{
   background:white;
 }
+
+.control-properties-header{
+    font-size: 32px;
+}

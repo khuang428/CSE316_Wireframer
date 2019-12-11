@@ -18,7 +18,8 @@ class EditScreen extends Component{
     widthBox: this.props.diagram.width,
     controls: this.props.diagram.controls,
     dimensionChanged: false,
-    hasChanged: false
+    hasChanged: false,
+    selectedControl: null
   }
 
   handleNameChange = (e) => {
@@ -29,7 +30,7 @@ class EditScreen extends Component{
     this.setState({zoom: this.state.zoom*multiplier});
   }
 
-  handleDimensionChange = (e) =>{
+  handleDimensionChange = (e) => {
     let dimension = parseInt(e.target.value);
     if(dimension < 1){
       this.setState({[e.target.id]: 1, dimensionChanged: true});
@@ -40,8 +41,16 @@ class EditScreen extends Component{
     }
   }
 
-  handleDimensionUpdate = () =>{
+  handleDimensionUpdate = () => {
     this.setState({height: this.state.heightBox, width: this.state.widthBox, dimensionChanged: false});
+  }
+
+  handleClick = (e) => {
+    if(e.target.className.includes("control")){
+      this.setState({selectedControl: this.state.controls[parseInt(e.target.id)]});
+    }else{
+      this.setState({selectedControl: null});
+    }
   }
 
   render(){
@@ -79,15 +88,48 @@ class EditScreen extends Component{
               </div>
             </div>
             <div className = "col s6 wireframe-container">
-              <div className = "wireframe-display" style = {{height: this.state.height, width: this.state.width, transform: "scale("+this.state.zoom +")"}}>
+              <div className = "wireframe-display" onClick = {(e) =>this.handleClick(e)} style = {{height: this.state.height, width: this.state.width, transform: "scale("+this.state.zoom +")"}}>
                 
               {this.state.controls.map(control => (
-                <Control control = {control}></Control>
+                <Control control = {control} key = {this.state.controls.indexOf(control)} id = {this.state.controls.indexOf(control)} onClick = {(e) => this.handleClick(e)}></Control>
               ))}
               </div>
             </div>
             <div className = "col s3 right util-bar">
-              <div className = "card">filler filler</div>
+              {this.state.selectedControl == null ? <div></div>
+                                                    :<div className = "control-properties">
+                  <p className = "control-properties-header">Properties</p>
+                  {this.state.selectedControl.type == "container" ? <label htmlFor="control-text">Text</label> 
+                                                                  : <label htmlFor="control-text" className="active">Text</label>
+                  }
+                  {this.state.selectedControl.type == "container" ? <input disabled type = "text" value = ""></input>
+                                                                  : <input type = "text" value = {this.state.selectedControl.text}></input>
+                  }
+                  {this.state.selectedControl.type == "container" ? <label htmlFor="control-font-size">Font Size</label>
+                                                                  : <label htmlFor="control-font-size" className="active">Font Size</label>
+                  }
+                  {this.state.selectedControl.type == "container" ? <input disabled type = "number" value = ""></input>
+                                                                  : <input type = "number" value = {this.state.selectedControl.fontSize}></input>
+                  }                                                                
+                  {this.state.selectedControl.type == "container" ? <label htmlFor="control-text-color">Text Color:&nbsp;</label>
+                                                                  : <label htmlFor="control-text-color">Text Color:&nbsp;</label>
+                  }
+                  {this.state.selectedControl.type == "container" ? <input disabled type = "color" value = ""></input>
+                                                                  : <input type = "color" value = {this.state.selectedControl.textColor}></input>
+                  }
+                  <br></br>
+                  <label htmlFor="control-background-color">Background Color:&nbsp;</label>
+                  <input type = "color" value = {this.state.selectedControl.backgroundColor}></input>
+                  <br></br>
+                  <label htmlFor="control-border-color">Border Color:&nbsp;</label>
+                  <input type = "color" value = {this.state.selectedControl.borderColor}></input>
+                  <br></br> 
+                  <label htmlFor="control-border-thickness" className="active">Border Thickness</label>
+                  <input type = "number" value = {this.state.selectedControl.borderThickness}></input>
+                  <label htmlFor="control-border-radius" className="active">Border Radius</label>
+                  <input type = "number" value = {this.state.selectedControl.borderRadius}></input>
+                </div>
+                }
             </div>
           </div>
       )

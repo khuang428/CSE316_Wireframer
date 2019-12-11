@@ -7,7 +7,7 @@ class Control extends Component{
         switch(control.type){
             case "container":
                 return(
-                    <div className = "control-container" style ={{left: control.position[0], 
+                    <div className = "control control-container" style ={{left: control.position[0], 
                                                                   top: control.position[1], 
                                                                   width: control.width,
                                                                   height: control.height,
@@ -16,11 +16,11 @@ class Control extends Component{
                                                                   borderColor: control.borderColor,
                                                                   borderWidth: control.borderThickness,
                                                                   borderRadius: control.borderRadius
-                                                                }}></div>
+                                                                }} id = {this.props.id}></div>
                 )
             case "label":
                     return(
-                        <div className = "control-label" style ={{left: control.position[0], 
+                        <div className = "control control-label" style ={{left: control.position[0], 
                                                                       top: control.position[1], 
                                                                       width: control.width,
                                                                       height: control.height,
@@ -31,11 +31,11 @@ class Control extends Component{
                                                                       borderColor: control.borderColor,
                                                                       borderWidth: control.borderThickness,
                                                                       borderRadius: control.borderRadius
-                                                                    }}>{control.text}</div>
+                                                                    }} id = {this.props.id}>{control.text}</div>
                     )
             case "button":
                     return(
-                        <div className = "z-depth 2 control-button" style ={{left: control.position[0], 
+                        <div className = "z-depth 2 control control-button" style ={{left: control.position[0], 
                                                                       top: control.position[1], 
                                                                       width: control.width,
                                                                       height: control.height,
@@ -46,11 +46,11 @@ class Control extends Component{
                                                                       borderColor: control.borderColor,
                                                                       borderWidth: control.borderThickness,
                                                                       borderRadius: control.borderRadius,
-                                                                    }}>{control.text}</div>
+                                                                    }} id = {this.props.id}>{control.text}</div>
                     )
             case "textfield":
                     return(
-                        <div className = "control-textfield" style ={{left: control.position[0], 
+                        <div className = "control control-textfield" style ={{left: control.position[0], 
                                                                       top: control.position[1], 
                                                                       width: control.width,
                                                                       height: control.height,
@@ -61,7 +61,7 @@ class Control extends Component{
                                                                       borderColor: control.borderColor,
                                                                       borderWidth: control.borderThickness,
                                                                       borderRadius: control.borderRadius
-                                                                    }}>{control.text}</div>
+                                                                    }} id = {this.props.id}>{control.text}</div>
                     )
             default:
                 return;
