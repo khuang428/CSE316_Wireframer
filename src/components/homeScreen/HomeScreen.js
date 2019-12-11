@@ -5,7 +5,7 @@ import {Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import DiagramLinks from './DiagramLinks';
 import { getFirestore } from 'redux-firestore';
-
+import Button from 'react-materialize/lib/Button';
 
 class HomeScreen extends Component {
     handleNewDiagram = () =>{
@@ -44,9 +44,9 @@ class HomeScreen extends Component {
                     </div>
                     
                     <div className="center">
-                            <button className="blue-grey white-text waves-effect waves-light btn-large create-btn" onClick ={this.handleNewDiagram}>
+                            <Button className="blue-grey white-text waves-effect waves-light btn-large create-btn" onClick ={this.handleNewDiagram}>
                                 Create New Wireframe Diagram
-                            </button>
+                            </Button>
                     </div>
                 </div>
             </div>
