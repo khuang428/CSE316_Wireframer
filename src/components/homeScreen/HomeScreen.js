@@ -29,7 +29,7 @@ class HomeScreen extends Component {
                     </div>
                     
                     <div className="center">
-                            <button className="blue-grey white-text waves-effect waves-light btn-large create-button">
+                            <button className="blue-grey white-text waves-effect waves-light btn-large create-btn">
                                 Create New Wireframe Diagram
                             </button>
                     </div>

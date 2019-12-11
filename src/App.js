@@ -9,6 +9,7 @@ import DatabaseTester from './test/DatabaseTester';
 import LoginScreen from './components/loginScreen/LoginScreen';
 import RegisterScreen from './components/registerScreen/RegisterScreen';
 import HomeScreen from './components/homeScreen/HomeScreen';
+import EditScreen from './components/editScreen/EditScreen'
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
               <Route path="/login" component={LoginScreen} />
               <Route path="/register" component={RegisterScreen} />
               <Route path="/databaseTester" component={DatabaseTester} />
+              <Route path="/edit/:id" component={EditScreen} />
             </Switch>
           </div>
         </BrowserRouter>

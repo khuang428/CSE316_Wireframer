@@ -1,17 +1,52 @@
 body {
-    background-color: #e6e8e6;
+  background-color: #e6e8e6;
 }
 
 div.banner {
-    background-image: linear-gradient(to bottom,         
-    #616161, #e0e0e0);
-    color: white;
-    font-size: 48pt;
-    border-color: black;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 10px;
-    padding-left: 10%;
-    padding-top: 5%;
-    padding-bottom: 5%;
-  }
+  background-image: linear-gradient(to bottom,         
+  #616161, #e0e0e0);
+  color: white;
+  font-size: 48pt;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  padding-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]){
+  border-color: #42a5f5 ;
+  box-shadow: none;
+}
+  
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label{
+  color: #42a5f5  !important;
+}
+  
+.diagram-controls{
+  background-color: transparent;
+  box-shadow: none!important;
+  -webkit-box-shadow: none!important;
+}
+
+.create-btn{
+  text-transform: none!important;
+  font-size: 30px;
+  font-weight:thin;
+}
+
+.zoom-btn{
+  font-size:2rem!important;
+}
+
+.wireframe-container{
+  background:white;
+}
