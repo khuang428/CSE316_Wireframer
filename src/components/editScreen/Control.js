@@ -12,10 +12,8 @@ class Control extends Component{
                                                                   width: control.width,
                                                                   height: control.height,
                                                                   backgroundColor: control.backgroundColor,
-                                                                  border: "solid",
-                                                                  borderColor: control.borderColor,
-                                                                  borderWidth: control.borderThickness,
-                                                                  borderRadius: control.borderRadius
+                                                                  border: "solid " + " " + control.borderColor + " " + control.borderThickness + "px",
+                                                                  borderRadius: control.borderRadius + "px"
                                                                 }} id = {this.props.id}></div>
                 )
             case "label":
@@ -24,13 +22,11 @@ class Control extends Component{
                                                                       top: control.position[1], 
                                                                       width: control.width,
                                                                       height: control.height,
-                                                                      fontSize: control.fontSize,
+                                                                      fontSize: control.fontSize + "px",
                                                                       color: control.textColor,
                                                                       backgroundColor: control.backgroundColor,
-                                                                      border: "solid",
-                                                                      borderColor: control.borderColor,
-                                                                      borderWidth: control.borderThickness,
-                                                                      borderRadius: control.borderRadius
+                                                                      border: "solid " + " " + control.borderColor + " " + control.borderThickness + "px",
+                                                                      borderRadius: control.borderRadius + "px"
                                                                     }} id = {this.props.id}>{control.text}</div>
                     )
             case "button":
@@ -39,13 +35,11 @@ class Control extends Component{
                                                                       top: control.position[1], 
                                                                       width: control.width,
                                                                       height: control.height,
-                                                                      fontSize: control.fontSize,
+                                                                      fontSize: control.fontSize + "px",
                                                                       color: control.textColor,
                                                                       backgroundColor: control.backgroundColor,
-                                                                      border: "solid",
-                                                                      borderColor: control.borderColor,
-                                                                      borderWidth: control.borderThickness,
-                                                                      borderRadius: control.borderRadius,
+                                                                      border: "solid " + " " + control.borderColor + " " + control.borderThickness + "px",
+                                                                      borderRadius: control.borderRadius + "px"
                                                                     }} id = {this.props.id}>{control.text}</div>
                     )
             case "textfield":
@@ -54,13 +48,11 @@ class Control extends Component{
                                                                       top: control.position[1], 
                                                                       width: control.width,
                                                                       height: control.height,
-                                                                      fontSize: control.fontSize,
+                                                                      fontSize: control.fontSize + "px",
                                                                       color: control.textColor,
                                                                       backgroundColor: control.backgroundColor,
-                                                                      border: "solid",
-                                                                      borderColor: control.borderColor,
-                                                                      borderWidth: control.borderThickness,
-                                                                      borderRadius: control.borderRadius
+                                                                      border: "solid " + " " + control.borderColor + " " + control.borderThickness + "px",
+                                                                      borderRadius: control.borderRadius + "px"
                                                                     }} id = {this.props.id}>{control.text}</div>
                     )
             default:

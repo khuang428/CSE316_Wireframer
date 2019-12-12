@@ -53,6 +53,28 @@ class EditScreen extends Component{
     }
   }
 
+  handlePropertyChange = (e) => {
+    let controlToChange = this.state.selectedControl;
+    switch(e.target.id){
+      case("control-text"):
+        controlToChange.text = e.target.value;
+        break;
+      case("control-font-size"):
+        controlToChange.fontSize = e.target.value;
+        break;
+      //TODO add color picker with hex values instead
+      case("control-border-thickness"):
+        controlToChange.borderThickness = e.target.value;
+        break;
+      case("control-border-radius"):
+        controlToChange.borderRadius = e.target.value;
+        break;
+      default:
+        break;
+    }
+    this.setState({selectedControl: controlToChange});
+  }
+
   render(){
       const auth = this.props.auth;
       const diagram = this.props.diagram;
@@ -102,32 +124,32 @@ class EditScreen extends Component{
                   {this.state.selectedControl.type == "container" ? <label htmlFor="control-text">Text</label> 
                                                                   : <label htmlFor="control-text" className="active">Text</label>
                   }
-                  {this.state.selectedControl.type == "container" ? <input disabled type = "text" value = ""></input>
-                                                                  : <input type = "text" value = {this.state.selectedControl.text}></input>
+                  {this.state.selectedControl.type == "container" ? <input disabled type = "text" id = "control-text" value = ""></input>
+                                                                  : <input type = "text" id = "control-text" value = {this.state.selectedControl.text} onChange = {e => this.handlePropertyChange(e)}></input>
                   }
                   {this.state.selectedControl.type == "container" ? <label htmlFor="control-font-size">Font Size</label>
                                                                   : <label htmlFor="control-font-size" className="active">Font Size</label>
                   }
-                  {this.state.selectedControl.type == "container" ? <input disabled type = "number" value = ""></input>
-                                                                  : <input type = "number" value = {this.state.selectedControl.fontSize}></input>
+                  {this.state.selectedControl.type == "container" ? <input disabled type = "number" id = "control-font-size" value = ""></input>
+                                                                  : <input type = "number" id = "control-font-size" value = {this.state.selectedControl.fontSize} onChange = {e => this.handlePropertyChange(e)}></input>
                   }                                                                
                   {this.state.selectedControl.type == "container" ? <label htmlFor="control-text-color">Text Color:&nbsp;</label>
                                                                   : <label htmlFor="control-text-color">Text Color:&nbsp;</label>
                   }
-                  {this.state.selectedControl.type == "container" ? <input disabled type = "color" value = ""></input>
-                                                                  : <input type = "color" value = {this.state.selectedControl.textColor}></input>
+                  {this.state.selectedControl.type == "container" ? <input disabled type = "color" id = "control-text-color" value = ""></input>
+                                                                  : <input type = "color" id = "control-text-color" value = {this.state.selectedControl.textColor} onChange = {e => this.handlePropertyChange(e)}></input>
                   }
                   <br></br>
                   <label htmlFor="control-background-color">Background Color:&nbsp;</label>
-                  <input type = "color" value = {this.state.selectedControl.backgroundColor}></input>
+                  <input type = "color" id = "control-background-color" value = {this.state.selectedControl.backgroundColor} onChange = {e => this.handlePropertyChange(e)}></input>
                   <br></br>
                   <label htmlFor="control-border-color">Border Color:&nbsp;</label>
-                  <input type = "color" value = {this.state.selectedControl.borderColor}></input>
+                  <input type = "color" id = "control-border-color" value = {this.state.selectedControl.borderColor} onChange = {e => this.handlePropertyChange(e)}></input>
                   <br></br> 
                   <label htmlFor="control-border-thickness" className="active">Border Thickness</label>
-                  <input type = "number" value = {this.state.selectedControl.borderThickness}></input>
+                  <input type = "number" id = "control-border-thickness" value = {this.state.selectedControl.borderThickness} onChange = {e => this.handlePropertyChange(e)}></input>
                   <label htmlFor="control-border-radius" className="active">Border Radius</label>
-                  <input type = "number" value = {this.state.selectedControl.borderRadius}></input>
+                  <input type = "number" id = "control-border-radius" value = {this.state.selectedControl.borderRadius} onChange = {e => this.handlePropertyChange(e)}></input>
                 </div>
                 }
             </div>

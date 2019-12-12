@@ -20,6 +20,10 @@ body {
   top: 5%;
 }
 
+.initials{
+  cursor: default;
+}
+
 div.banner {
   padding: 20px!important;
   margin-top: 60px;
@@ -76,3 +80,4 @@ form div{
 .control-properties-header{
   margin: 10px 0;
 }
+
