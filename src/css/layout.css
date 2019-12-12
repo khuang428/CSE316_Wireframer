@@ -75,6 +75,9 @@ form div{
 .control{
   position: relative;
   cursor: pointer;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
 }
 
 .control-properties-header{

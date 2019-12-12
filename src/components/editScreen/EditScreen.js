@@ -87,6 +87,21 @@ class EditScreen extends Component{
     this.setState({hasChanged: false, hasSaved: true});
   }
 
+  handleKeyPress = (e) => {
+    if(e.keyCode == 46 && this.state.selectedControl != null){
+      let controlToDelete = this.state.selectedControl;
+      this.setState({controls:this.state.controls.filter(function(val){return val != controlToDelete}), selectedControl: null, hasChanged: true, hasSaved: false});
+    }
+  }
+
+  componentDidMount(){
+    document.addEventListener("keydown", this.handleKeyPress, false);
+}
+
+  componentWillUnmount(){
+      document.removeEventListener("keydown", this.handleKeyPress, false);
+  }
+
   render(){
       const auth = this.props.auth;
       const diagram = this.props.diagram;
