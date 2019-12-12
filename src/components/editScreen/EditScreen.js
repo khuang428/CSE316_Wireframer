@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { getFirestore } from 'redux-firestore';
+import { Link } from 'react-router-dom';
 import Button from 'react-materialize/lib/Button';
+import Modal from 'react-materialize/lib/Modal';
 
 import Control from './Control';
 
@@ -19,11 +21,12 @@ class EditScreen extends Component{
     controls: this.props.diagram.controls,
     dimensionChanged: false,
     hasChanged: false,
+    hasSaved: true,
     selectedControl: null
   }
 
   handleNameChange = (e) => {
-    this.setState({name: e.target.value, hasChanged: true});
+    this.setState({name: e.target.value, hasChanged: true, hasSaved: false});
   }
 
   handleZoom = (multiplier) => {
@@ -42,7 +45,7 @@ class EditScreen extends Component{
   }
 
   handleDimensionUpdate = () => {
-    this.setState({height: this.state.heightBox, width: this.state.widthBox, dimensionChanged: false});
+    this.setState({height: this.state.heightBox, width: this.state.widthBox, dimensionChanged: false, hasChanged: true, hasSaved: false});
   }
 
   handleClick = (e) => {
@@ -72,7 +75,16 @@ class EditScreen extends Component{
       default:
         break;
     }
-    this.setState({selectedControl: controlToChange});
+    this.setState({selectedControl: controlToChange, hasChanged: true, hasSaved: false});
+  }
+
+  handleSave = () => {
+    let fireStore = getFirestore();
+    fireStore.collection("diagrams").doc(this.props.diagram.id).update({name: this.state.name,
+                                                                        height: this.state.height,
+                                                                        width: this.state.width,
+                                                                        controls: this.state.controls});
+    this.setState({hasChanged: false, hasSaved: true});
   }
 
   render(){
@@ -94,8 +106,13 @@ class EditScreen extends Component{
                 {this.state.zoom == 0.25 ? <Button className = "disabled" onClick = {() => this.handleZoom(0.5)}><i className="material-icons zoom-btn">zoom_out</i></Button>
                                       : <Button onClick = {() => this.handleZoom(0.5)}><i className="material-icons zoom-btn">zoom_out</i></Button>}
                 &nbsp;
-                <Button>Save</Button>&nbsp;
-                <Button>Close</Button>
+                {this.state.hasChanged ? <Button onClick = {this.handleSave}>Save</Button> : <Button disabled>Save</Button>}
+                &nbsp;
+                {this.state.hasSaved ? <Link to="/"><Button>Close</Button></Link>
+                                     : <Modal header="Leave Without Saving?" options={{dismissible: false}} trigger={<Button>Close</Button>}
+                                        actions={[<Link to="/"><Button className="blue-grey darken-1" modal="close">Yes</Button></Link>,<Button className="blue-grey darken-1" modal="close">No</Button>]}>
+                                          <p className = "bold-text">Any changes you've made will not be retrievable. <br></br> Are you sure you want to leave?</p>
+                                       </Modal>}
               </div>
               <label htmlFor="diagram-name" className="active">Diagram Name</label>
               <input type = "text" id = "diagram-name" value = {this.state.name} onChange = {this.handleNameChange}></input>
