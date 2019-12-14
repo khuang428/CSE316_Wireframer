@@ -37,6 +37,10 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   -webkit-box-shadow: none!important;
 }
 
+.close-btn, .save-btn{
+    font-size: 11px;
+  }
+
 .create-btn{
   text-transform: none!important;
   font-size: 30px;

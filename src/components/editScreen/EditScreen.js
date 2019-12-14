@@ -10,6 +10,7 @@ import Modal from 'react-materialize/lib/Modal';
 
 import Control from './Control';
 
+
 class EditScreen extends Component{
   state = {
     name: this.props.diagram.name,
@@ -89,8 +90,31 @@ class EditScreen extends Component{
 
   handleKeyPress = (e) => {
     if(e.keyCode == 46 && this.state.selectedControl != null){
+      e.preventDefault();
       let controlToDelete = this.state.selectedControl;
       this.setState({controls:this.state.controls.filter(function(val){return val != controlToDelete}), selectedControl: null, hasChanged: true, hasSaved: false});
+      console.log(this.state.controls);
+    }
+    if(e.ctrlKey && e.keyCode == 68 && this.state.selectedControl != null){
+      e.preventDefault();
+      console.log("woop");
+      let controlToDupe = this.state.selectedControl;
+      let newControl = {
+        position: [controlToDupe.position[0] + 100, controlToDupe.position[1] + 100],
+        width: controlToDupe.width,
+        height: controlToDupe.height,
+        type: controlToDupe.type,
+        text: controlToDupe.text,
+        fontSize: controlToDupe.fontSize,
+        textColor: controlToDupe.textColor,
+        backgroundColor: controlToDupe.backgroundColor,
+        borderColor: controlToDupe.borderColor,
+        borderThickness: controlToDupe.borderThickness,
+        borderRadius: controlToDupe.borderRadius
+      }
+      let controls = this.state.controls;
+      controls.push(newControl);
+      this.setState({controls: controls, hasChanged: true, hasSaved: false});
     }
   }
 
@@ -113,18 +137,15 @@ class EditScreen extends Component{
       }
       return (
           <div className = "row">
-            <div className = "col s3 left util-bar">
+            <div className = "col s2 left util-bar">
               <div className = "card diagram-controls">
                 {this.state.zoom == 4 ? <Button className = "disabled" onClick = {() => this.handleZoom(2.0)}><i className="material-icons zoom-btn">zoom_in</i></Button>
                                       : <Button onClick = {() => this.handleZoom(2.0)}><i className="material-icons zoom-btn">zoom_in</i></Button>}
-                &nbsp;
                 {this.state.zoom == 0.25 ? <Button className = "disabled" onClick = {() => this.handleZoom(0.5)}><i className="material-icons zoom-btn">zoom_out</i></Button>
                                       : <Button onClick = {() => this.handleZoom(0.5)}><i className="material-icons zoom-btn">zoom_out</i></Button>}
-                &nbsp;
-                {this.state.hasChanged ? <Button onClick = {this.handleSave}>Save</Button> : <Button disabled>Save</Button>}
-                &nbsp;
-                {this.state.hasSaved ? <Link to="/"><Button>Close</Button></Link>
-                                     : <Modal header="Leave Without Saving?" options={{dismissible: false}} trigger={<Button>Close</Button>}
+                {this.state.hasChanged ? <Button className = "save-btn" onClick = {this.handleSave}>Save</Button> : <Button disabled className = "save-btn">Save</Button>}
+                {this.state.hasSaved ? <Link to="/"><Button className = "close-btn">Close</Button></Link>
+                                     : <Modal header="Leave Without Saving?" options={{dismissible: false}} trigger={<Button className = "close-btn">Close</Button>}
                                         actions={[<Link to="/"><Button className="blue-grey darken-1" modal="close">Yes</Button></Link>,<Button className="blue-grey darken-1" modal="close">No</Button>]}>
                                           <p className = "bold-text">Any changes you've made will not be retrievable. <br></br> Are you sure you want to leave?</p>
                                        </Modal>}
@@ -141,15 +162,15 @@ class EditScreen extends Component{
               
               </div>
             </div>
-            <div className = "col s6 wireframe-container">
+            <div className = "col s8 wireframe-container">
               <div className = "wireframe-display" onClick = {(e) =>this.handleClick(e)} style = {{height: this.state.height, width: this.state.width, transform: "scale("+this.state.zoom +")"}}>
                 
               {this.state.controls.map(control => (
-                <Control control = {control} key = {this.state.controls.indexOf(control)} id = {this.state.controls.indexOf(control)} onClick = {(e) => this.handleClick(e)}></Control>
+                <Control scale = {this.state.zoom} control = {control} key = {this.state.controls.indexOf(control)} id = {this.state.controls.indexOf(control)} onClick = {(e) => this.handleClick(e)}></Control>
               ))}
               </div>
             </div>
-            <div className = "col s3 right util-bar">
+            <div className = "col s2 right util-bar">
               {this.state.selectedControl == null ? <div></div>
                                                     :<div className = "control-properties">
                   <p className = "control-properties-header">Properties</p>
