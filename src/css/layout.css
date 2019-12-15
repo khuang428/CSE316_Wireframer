@@ -60,7 +60,7 @@ form div{
 .wireframe-container{
   margin: 0 auto;
   text-align: center;
-  overflow: scroll;
+  overflow: auto;
   height: 80vh;
   width: 100vh;
 }

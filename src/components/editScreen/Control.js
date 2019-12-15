@@ -14,7 +14,7 @@ class Control extends Component{
                  bounds = "parent"
                  scale = {this.props.scale}
                  onDragStop={(e,d) => {control.position[0] = d.x; control.position[1] = d.y; this.props.handleOnResizeDrag()}}
-                 onResizeStop={(e, direction, ref, delta, position) => {control.height = ref.style.height; control.width = ref.style.width; this.props.handleOnResizeDrag()}}
+                 onResizeStop={(e, direction, ref, delta, position) => {control.height = ref.style.height; control.width = ref.style.width; control.position[0] = position.x; control.position[1] = position.y; this.props.handleOnResizeDrag()}}
                  enableResizing = {
                     { top:false, right:false, bottom:false, left:false, topRight:true, bottomRight:true, bottomLeft:true, topLeft:true }
                  }

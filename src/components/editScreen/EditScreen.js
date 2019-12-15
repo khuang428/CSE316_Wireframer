@@ -232,13 +232,13 @@ class EditScreen extends Component{
           <div className = "row">
             <div className = "col s2 left util-bar">
               <div className = "card diagram-controls">
-                {this.state.zoom == 4 ? <Button className = "disabled" onClick = {() => this.handleZoom(2.0)}><i className="material-icons zoom-btn">zoom_in</i></Button>
-                                      : <Button onClick = {() => this.handleZoom(2.0)}><i className="material-icons zoom-btn">zoom_in</i></Button>}
-                {this.state.zoom == 0.25 ? <Button className = "disabled" onClick = {() => this.handleZoom(0.5)}><i className="material-icons zoom-btn">zoom_out</i></Button>
-                                      : <Button onClick = {() => this.handleZoom(0.5)}><i className="material-icons zoom-btn">zoom_out</i></Button>}
-                {this.state.hasChanged ? <Button className = "save-btn" onClick = {this.handleSave}>Save</Button> : <Button disabled className = "save-btn">Save</Button>}
-                {this.state.hasSaved ? <Link to="/"><Button className = "close-btn">Close</Button></Link>
-                                     : <Modal header="Leave Without Saving?" options={{dismissible: false}} trigger={<Button className = "close-btn">Close</Button>}
+                {this.state.zoom == 4 ? <Button className = "disabled blue-grey white-text" onClick = {() => this.handleZoom(2.0)}><i className="material-icons zoom-btn">zoom_in</i></Button>
+                                      : <Button className = "blue-grey white-text" onClick = {() => this.handleZoom(2.0)}><i className="material-icons zoom-btn">zoom_in</i></Button>}
+                {this.state.zoom == 0.25 ? <Button className = "disabled blue-grey white-text" onClick = {() => this.handleZoom(0.5)}><i className="material-icons zoom-btn">zoom_out</i></Button>
+                                      : <Button className = "blue-grey white-text" onClick = {() => this.handleZoom(0.5)}><i className="material-icons zoom-btn">zoom_out</i></Button>}
+                {this.state.hasChanged ? <Button className = "save-btn blue-grey white-text" onClick = {this.handleSave}>Save</Button> : <Button disabled className = "save-btn">Save</Button>}
+                {this.state.hasSaved ? <Link to="/"><Button className = "close-btn blue-grey white-text">Close</Button></Link>
+                                     : <Modal header="Leave Without Saving?" options={{dismissible: false}} trigger={<Button className = "close-btn blue-grey white-text">Close</Button>}
                                         actions={[<Link to="/"><Button className="blue-grey darken-1" modal="close">Yes</Button></Link>,<Button className="blue-grey darken-1" modal="close">No</Button>]}>
                                           <p className = "bold-text">Any changes you've made will not be retrievable. <br></br> Are you sure you want to leave?</p>
                                        </Modal>}
