@@ -11,19 +11,15 @@ class Control extends Component{
                  scale = {this.props.scale}
                  onDragStop={(e,d) => {control.position[0] = d.x; control.position[1] = d.y; this.props.handleOnResizeDrag()}}
                  onResizeStop={(e, direction, ref, delta, position) => {control.height = ref.style.height; control.width = ref.style.width; this.props.handleOnResizeDrag()}}
-                 default = {{
-                     x: control.position[0],
-                     y: control.position[1],
-                     height: control.height,
-                     width: control.width,
-                 }}
+                 position = {{x: control.position[0], y:control.position[1]}}
+                 size = {{height: control.height, width: control.width}}
                  style ={{ 
                 fontSize: control.fontSize + "px",
                 color: control.textColor,
                 backgroundColor: control.backgroundColor,
                 border: "solid " + " " + control.borderColor + " " + control.borderThickness + "px",
                 borderRadius: control.borderRadius + "px"
-              }} id = {this.props.id}>
+              }} id = {this.props.id} className={"control-"+control.type}>
                   {control.text}
             </Rnd>
             )
@@ -35,19 +31,15 @@ class Control extends Component{
                 enableResizing = {
                     { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }
                 }
-                default = {{
-                    x: control.position[0],
-                    y: control.position[1],
-                    height: control.height,
-                    width: control.width,
-                }}
+                position = {{x: control.position[0], y:control.position[1]}}
+                size = {{height: control.height, width: control.width}}
                 style ={{ 
                fontSize: control.fontSize + "px",
                color: control.textColor,
                backgroundColor: control.backgroundColor,
                border: "solid " + " " + control.borderColor + " " + control.borderThickness + "px",
                borderRadius: control.borderRadius + "px"
-             }} id = {this.props.id}>
+             }} id = {this.props.id} className={"control-"+control.type}>
                  {control.text}
             </Rnd>
             

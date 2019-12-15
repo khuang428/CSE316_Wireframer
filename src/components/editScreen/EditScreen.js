@@ -106,7 +106,6 @@ class EditScreen extends Component{
       e.preventDefault();
       let controlToDelete = this.state.selectedControl;
       this.setState({controls:this.state.controls.filter(function(val){return val != controlToDelete}), selectedControl: null, hasChanged: true, hasSaved: false});
-      console.log(this.state.controls);
     }
     //duplicate
     if(e.ctrlKey && e.keyCode == 68 && this.state.selectedControl != null){
@@ -154,10 +153,10 @@ class EditScreen extends Component{
       case("add-label"):
         controls.push({
           position: [0,0],
-          width: this.state.width/10,
-          height: this.state.height/10,
+          width: this.state.width/5,
+          height: this.state.height/15,
           type: "label",
-          text: "Label",
+          text: "Prompt For Input: ",
           fontSize: 12,
           textColor: "#000000",
           backgroundColor: "#ffffff",
@@ -168,8 +167,36 @@ class EditScreen extends Component{
         this.setState({controls: controls, hasChanged: true, hasSaved: false});
         break;
       case("add-button"):
+        controls.push({
+          position: [0,0],
+          width: this.state.width/10,
+          height: this.state.height/20,
+          type: "button",
+          text: "Submit",
+          fontSize: 12,
+          textColor: "#000000",
+          backgroundColor: "#dddddd",
+          borderColor: "#000000",
+          borderThickness: 1,
+          borderRadius: 0
+        });
+        this.setState({controls: controls, hasChanged: true, hasSaved: false});
         break;
       case("add-textfield"):
+        controls.push({
+          position: [0,0],
+          width: this.state.width/5,
+          height: this.state.height/20,
+          type: "textfield",
+          text: "Input",
+          fontSize: 12,
+          textColor: "#afafaf",
+          backgroundColor: "#ffffff",
+          borderColor: "#000000",
+          borderThickness: 1,
+          borderRadius: 0
+        });
+        this.setState({controls: controls, hasChanged: true, hasSaved: false});
         break;
       default:
         break;
@@ -223,9 +250,21 @@ class EditScreen extends Component{
                   <div className = "container" id = "add-container" onClick = {this.handleNewControl}></div>
                   Container
                 </div>
-                <div className = "control-selection" onClick = {this.handleNewControl}>Label</div>
-                <div className = "control-selection" onClick = {this.handleNewControl}>Button</div>
-                <div className = "control-selection" onClick = {this.handleNewControl}>Textfield</div>
+                <hr style = {{borderColor: "#e0e0e0"}}></hr>
+                <div className = "control-selection">
+                  <div id = "add-label" onClick = {this.handleNewControl}>Prompt For Input:</div>
+                  Label
+                </div>
+                <hr style = {{borderColor: "#e0e0e0"}}></hr>
+                <div className = "control-selection">
+                  <div id = "add-button" onClick = {this.handleNewControl}>Submit</div>
+                  Button
+                </div>
+                <hr style = {{borderColor: "#e0e0e0"}}></hr>
+                <div className = "control-selection">
+                <div id = "add-textfield" onClick = {this.handleNewControl}>Input</div>
+                  Textfield
+                </div>
               </div>
             </div>
             <div className = "col s8 wireframe-container">
