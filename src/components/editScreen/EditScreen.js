@@ -27,7 +27,7 @@ class EditScreen extends Component{
   }
 
   handleOnResizeDrag = () => {
-    this.setState({hasChanged: true});
+    this.setState({hasChanged: true}, function(){document.getElementById("display").click()});
   }
 
   handleNameChange = (e) => {
