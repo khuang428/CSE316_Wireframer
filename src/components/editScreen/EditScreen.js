@@ -135,7 +135,7 @@ class EditScreen extends Component{
       }
       let controls = this.state.controls;
       controls.push(newControl);
-      this.setState({controls: controls, hasChanged: true, hasSaved: false});
+      this.setState({controls: controls, selectedControl: newControl, hasChanged: true, hasSaved: false});
     }
   }
 
@@ -276,7 +276,7 @@ class EditScreen extends Component{
               </div>
             </div>
             <div className = "col s8 wireframe-container">
-              <div className = "wireframe-display" onClick = {(e) =>this.handleClick(e)} style = {{height: this.state.height, width: this.state.width, transform: "scale("+this.state.zoom +")"}}>
+              <div className = "wireframe-display" onClick = {(e) =>this.handleClick(e)} style = {{height: this.state.height + "px", width: this.state.width + "px", transform: "scale("+ this.state.zoom +")"}}>
                 
               {this.state.controls.map(control => (
                 <Control handleOnResizeDrag = {this.handleOnResizeDrag} selected = {control == this.state.selectedControl} scale = {this.state.zoom} control = {control} key = {this.state.controls.indexOf(control)} id = {this.state.controls.indexOf(control)} onClick = {(e) => this.handleClick(e)}></Control>

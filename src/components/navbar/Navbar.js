@@ -15,7 +15,7 @@ class Navbar extends React.Component {
     return (
       <nav className="nav-wrapper grey darken-2">
         <div className="container">
-          <div className="brand-logo">Wireframer&trade;</div>
+          <Link to="/" className="brand-logo">Wireframer&trade;</Link>
           {links}
         </div>
       </nav>

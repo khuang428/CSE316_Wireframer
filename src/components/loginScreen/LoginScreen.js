@@ -46,7 +46,7 @@ class LoginScreen extends Component {
     return (
       <div className="container">
         <div className="row">
-          <form onSubmit={this.handleSubmit} className="col s4">
+          <form onSubmit={this.handleSubmit} className="col s5">
             <h5 className="grey-text text-darken-3">Login</h5>
             <div className="input-field">
               <label htmlFor="email">Email</label>
@@ -62,7 +62,7 @@ class LoginScreen extends Component {
             </div>
           </form>
 
-          <div className="col s8 banner">
+          <div className="col s7 banner">
             Wireframer&trade;<br />
           </div>
         </div>

@@ -38,7 +38,7 @@ class HomeScreen extends Component {
                     <DiagramLinks />
                 </div>
 
-                <div className="col s8">
+                <div className="col s7 right">
                     <div className="banner">
                         Wireframer&trade;<br />
                     </div>
