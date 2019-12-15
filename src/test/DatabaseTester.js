@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import testJson from './TestDiagramsData.json'
+import testJson from './TestDiagramsData.json';
 import { getFirestore } from 'redux-firestore';
-import { database } from 'firebase';
 import { compose } from 'redux';
-import { firebaseConnect } from 'react-redux-firebase';
+import { firebaseConnect, firestoreConnect} from 'react-redux-firebase';
 import { registerHandler } from '../store/database/asynchHandler';
 
 class DatabaseTester extends React.Component {
@@ -42,6 +42,15 @@ class DatabaseTester extends React.Component {
     }
 
     render() {
+        if(this.props.users){
+            const currUserId = this.props.auth.uid;
+            const currUser = this.props.users.find(function(user){return user.id == currUserId});
+            if(!currUser.admin){
+            
+                return <Redirect to="/" />;
+            }
+        }
+        
         return (
             <div>
                 <button onClick={this.handleClear}>Clear Database</button>
@@ -52,7 +61,8 @@ class DatabaseTester extends React.Component {
 
 const mapStateToProps = function (state) {
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        users: state.firestore.ordered.users
     };
 }
 
@@ -60,4 +70,4 @@ const mapDispatchToProps = dispatch => ({
     register: (newUser, firebase) => dispatch(registerHandler(newUser, firebase)),
   });
 
-export default compose(firebaseConnect(), connect(mapStateToProps, mapDispatchToProps))(DatabaseTester);
+export default compose(firebaseConnect(), connect(mapStateToProps, mapDispatchToProps),firestoreConnect([{collection: "users"}]))(DatabaseTester);

@@ -119,7 +119,7 @@
 				"type": "label",
 				"text": "W1r3fr4m3r TM",
 				"fontSize": 12,
-				"textColor": "#ffffff",
+				"textColor": "#000000",
 				"backgroundColor": "transparent",
 				"borderColor": "#000000",
 				"borderThickness": 2,
