@@ -60,12 +60,14 @@ form div{
 .wireframe-container{
   margin: 0 auto;
   text-align: center;
+  overflow: scroll;
+  height: 80vh;
+  width: 100vh;
 }
 
 .wireframe-display{
   position:relative;
   transform-origin: top left;
-  overflow: scroll;
   max-height: 80vh;
   display:inline-block;
 }
