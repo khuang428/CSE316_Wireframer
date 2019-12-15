@@ -167,7 +167,7 @@ class EditScreen extends Component{
           text: "Prompt For Input: ",
           fontSize: 12,
           textColor: "#000000",
-          backgroundColor: "#ffffff",
+          backgroundColor: "transparent",
           borderColor: "#000000",
           borderThickness: 0,
           borderRadius: 0
@@ -299,15 +299,15 @@ class EditScreen extends Component{
                   {this.state.selectedControl.type == "container" ? <input disabled type = "number" id = "control-font-size" value = ""></input>
                                                                   : <input type = "number" id = "control-font-size" value = {this.state.selectedControl.fontSize} onChange = {e => this.handlePropertyChange(e)}></input>
                   }                                                                
-                  {this.state.selectedControl.type == "container" ? <label htmlFor="control-text-color">Text Color:&nbsp;</label>
-                                                                  : <label htmlFor="control-text-color">Text Color:&nbsp;</label>
-                  }
+                  <label htmlFor="control-text-color">Text Color:&nbsp;</label>
                   {this.state.selectedControl.type == "container" ? <input disabled type = "color" id = "control-text-color" value = ""></input>
                                                                   : <input type = "color" id = "control-text-color" value = {this.state.selectedControl.textColor} onChange = {e => this.handlePropertyChange(e)}></input>
                   }
                   <br></br>
                   <label htmlFor="control-background-color">Background Color:&nbsp;</label>
-                  <input type = "color" id = "control-background-color" value = {this.state.selectedControl.backgroundColor} onChange = {e => this.handlePropertyChange(e)}></input>
+                  {this.state.selectedControl.type == "label" ? <input disabled type = "color" id = "control-background-color" value = "white"></input>
+                                                              : <input type = "color" id = "control-background-color" value = {this.state.selectedControl.backgroundColor} onChange = {e => this.handlePropertyChange(e)}></input>
+                  }
                   <br></br>
                   <label htmlFor="control-border-color">Border Color:&nbsp;</label>
                   <input type = "color" id = "control-border-color" value = {this.state.selectedControl.borderColor} onChange = {e => this.handlePropertyChange(e)}></input>

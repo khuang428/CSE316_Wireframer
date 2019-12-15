@@ -13,7 +13,7 @@
 				"text": "Testing 123",
 				"fontSize": 12,
 				"textColor": "#000000",
-				"backgroundColor": "ffffff",
+				"backgroundColor": "transparent",
 				"borderColor": "#000000",
 				"borderThickness": 1,
 				"borderRadius": 0
@@ -47,7 +47,7 @@
 				"text": "Welcome to my Cool Homepage",
 				"fontSize": 30,
 				"textColor": "#0000ff",
-				"backgroundColor": "#ffffff",
+				"backgroundColor": "transparent",
 				"borderColor": "#ffffff",
 				"borderThickness": 0,
 				"borderRadius": 0
@@ -120,7 +120,7 @@
 				"text": "W1r3fr4m3r TM",
 				"fontSize": 12,
 				"textColor": "#ffffff",
-				"backgroundColor": "#cccc00",
+				"backgroundColor": "transparent",
 				"borderColor": "#000000",
 				"borderThickness": 2,
 				"borderRadius": 2
