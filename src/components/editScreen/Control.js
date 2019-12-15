@@ -29,7 +29,6 @@ class Control extends Component{
                     backgroundColor: control.backgroundColor,
                     border: "solid " + " " + control.borderColor + " " + control.borderThickness + "px",
                     borderRadius: control.borderRadius + "px",
-                    transform: "scale(" + this.props.scale + ")!important"
                  }} id = {this.props.id} className={"control-"+control.type}>
                   {control.text}
             </Rnd>

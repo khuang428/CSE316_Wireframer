@@ -35,7 +35,7 @@ class EditScreen extends Component{
   }
 
   handleZoom = (multiplier) => {
-    this.setState({zoom: this.state.zoom*multiplier});
+    this.setState({zoom: this.state.zoom*multiplier}, function(){document.getElementById("display").click()});
   }
 
   handleDimensionChange = (e) => {
@@ -276,7 +276,7 @@ class EditScreen extends Component{
               </div>
             </div>
             <div className = "col s8 wireframe-container">
-              <div className = "wireframe-display" onClick = {(e) =>this.handleClick(e)} style = {{height: this.state.height + "px", width: this.state.width + "px", transform: "scale("+ this.state.zoom +")"}}>
+              <div className = "wireframe-display" id = "display" onClick = {(e) =>this.handleClick(e)} style = {{height: this.state.height + "px", width: this.state.width + "px", transform: "scale("+ this.state.zoom +")"}}>
                 
               {this.state.controls.map(control => (
                 <Control handleOnResizeDrag = {this.handleOnResizeDrag} selected = {control == this.state.selectedControl} scale = {this.state.zoom} control = {control} key = {this.state.controls.indexOf(control)} id = {this.state.controls.indexOf(control)} onClick = {(e) => this.handleClick(e)}></Control>

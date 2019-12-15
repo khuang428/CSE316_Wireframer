@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { firebaseConnect } from 'react-redux-firebase';
+import { firebaseConnect, firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
 import { registerHandler } from '../../store/database/asynchHandler'
@@ -24,6 +24,16 @@ class RegisterScreen extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
+    if(this.state.email == '' || this.state.password == '' || this.state.firstName == '' || this.state.lastName == ''){
+      alert("Please fill out all the fields.");
+      return;
+    }
+
+    if(this.state.password.length < 6){
+      alert("Your password should be at least 6 characters long.");
+      return;
+    }
 
     const { props, state } = this;
     const { firebase } = props;
@@ -61,7 +71,6 @@ class RegisterScreen extends Component {
             </div>
             <div className="input-field">
               <button type="submit" className="btn blue-grey darken-1 z-depth-1">Sign Up</button>
-              {authError ? <div className="red-text center"><p>{authError}</p></div> : null}
             </div>
           </form>
           <div className="col s7 banner">
@@ -85,5 +94,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   firebaseConnect(),
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps)
 )(RegisterScreen);
