@@ -68,7 +68,11 @@ class EditScreen extends Component{
         controlToChange.text = e.target.value;
         break;
       case("control-font-size"):
-        controlToChange.fontSize = e.target.value;
+        if(e.target.value > 100){
+          controlToChange.fontSize = 100;
+        }else{
+          controlToChange.fontSize = e.target.value;
+        }
         break;
       case("control-text-color"):
         controlToChange.textColor = e.target.value;
@@ -80,7 +84,11 @@ class EditScreen extends Component{
         controlToChange.borderColor = e.target.value;
         break;
       case("control-border-thickness"):
-        controlToChange.borderThickness = e.target.value;
+        if(e.target.value > 100){
+          controlToChange.borderThickness = 100;
+        }else{
+          controlToChange.borderThickness = e.target.value;
+        }
         break;
       case("control-border-radius"):
         controlToChange.borderRadius = e.target.value;
