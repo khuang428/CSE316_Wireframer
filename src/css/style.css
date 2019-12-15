@@ -51,10 +51,25 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   font-size:2rem!important;
 }
 
-.wireframe-container{
-  background:white;
+.control-properties-header, .control-select-header{
+    font-size: 20px;
 }
 
-.control-properties-header{
-    font-size: 32px;
+.close-btn, .save-btn{
+    font-size: 11px;
+  }
+
+.control{
+    display:flex;
+}
+
+.control-selection{
+    text-align: center;
+}
+
+#add-container{
+    border: solid 1px;
+    height: 75px;
+    width: 150px;
+    cursor: pointer;
 }

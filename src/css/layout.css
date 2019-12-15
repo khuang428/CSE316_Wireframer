@@ -63,23 +63,17 @@ form div{
 
 .wireframe-container{
   margin: 0 auto;
-  max-height: 80vh;
-  overflow: scroll;
+  text-align: center;
 }
 
 .wireframe-display{
   position:relative;
   transform-origin: top left;
+  overflow: scroll;
+  max-height: 80vh;
+  display:inline-block;
 }
 
-.control-properties-header{
+.control-properties-header, .control-select-header{
   margin: 10px 0;
-}
-
-.close-btn, .save-btn{
-  font-size: 11px;
-}
-
-.control{
-  display:flex;
 }

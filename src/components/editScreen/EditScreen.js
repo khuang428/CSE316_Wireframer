@@ -26,6 +26,10 @@ class EditScreen extends Component{
     selectedControl: null
   }
 
+  handleOnResizeDrag = () => {
+    this.setState({hasChanged: true});
+  }
+
   handleNameChange = (e) => {
     this.setState({name: e.target.value, hasChanged: true, hasSaved: false});
   }
@@ -66,7 +70,15 @@ class EditScreen extends Component{
       case("control-font-size"):
         controlToChange.fontSize = e.target.value;
         break;
-      //TODO add color picker with hex values instead
+      case("control-text-color"):
+        controlToChange.textColor = e.target.value;
+        break;
+      case("control-background-color"):
+        controlToChange.backgroundColor = e.target.value;
+        break;
+      case("control-border-color"):
+        controlToChange.borderColor = e.target.value;
+        break;
       case("control-border-thickness"):
         controlToChange.borderThickness = e.target.value;
         break;
@@ -89,12 +101,14 @@ class EditScreen extends Component{
   }
 
   handleKeyPress = (e) => {
+    //delete
     if(e.keyCode == 46 && this.state.selectedControl != null){
       e.preventDefault();
       let controlToDelete = this.state.selectedControl;
       this.setState({controls:this.state.controls.filter(function(val){return val != controlToDelete}), selectedControl: null, hasChanged: true, hasSaved: false});
       console.log(this.state.controls);
     }
+    //duplicate
     if(e.ctrlKey && e.keyCode == 68 && this.state.selectedControl != null){
       e.preventDefault();
       console.log("woop");
@@ -115,6 +129,50 @@ class EditScreen extends Component{
       let controls = this.state.controls;
       controls.push(newControl);
       this.setState({controls: controls, hasChanged: true, hasSaved: false});
+    }
+  }
+
+  handleNewControl = (e) => {
+    let controls = this.state.controls;
+    switch(e.target.id){
+      case("add-container"):
+        controls.push({
+          position: [0,0],
+          width: this.state.width/3,
+          height: this.state.height/3,
+          type: "container",
+          text: "",
+          fontSize: 0,
+          textColor: "#000000",
+          backgroundColor: "#ffffff",
+          borderColor: "#000000",
+          borderThickness: 1,
+          borderRadius: 0
+        });
+        this.setState({controls: controls, hasChanged: true, hasSaved: false});
+        break;
+      case("add-label"):
+        controls.push({
+          position: [0,0],
+          width: this.state.width/10,
+          height: this.state.height/10,
+          type: "label",
+          text: "Label",
+          fontSize: 12,
+          textColor: "#000000",
+          backgroundColor: "#ffffff",
+          borderColor: "#000000",
+          borderThickness: 0,
+          borderRadius: 0
+        });
+        this.setState({controls: controls, hasChanged: true, hasSaved: false});
+        break;
+      case("add-button"):
+        break;
+      case("add-textfield"):
+        break;
+      default:
+        break;
     }
   }
 
@@ -158,15 +216,23 @@ class EditScreen extends Component{
               <input type = "number" min = '1' max = '5000' id = "widthBox" value = {this.state.widthBox} onChange = {this.handleDimensionChange}></input>
               {this.state.dimensionChanged?<Button onClick = {this.handleDimensionUpdate}>Update Dimensions</Button>
                                           :<Button className = "disabled" onClick = {this.handleDimensionUpdate}>Update Dimensions</Button>}
-              <div className = "control-select-container grey">
-              
+              <hr style = {{borderColor: "#e0e0e0"}}></hr>
+              <div className = "control-select-container">
+                <p className = "control-select-header">Add Control</p>
+                <div className = "control-selection">
+                  <div className = "container" id = "add-container" onClick = {this.handleNewControl}></div>
+                  Container
+                </div>
+                <div className = "control-selection" onClick = {this.handleNewControl}>Label</div>
+                <div className = "control-selection" onClick = {this.handleNewControl}>Button</div>
+                <div className = "control-selection" onClick = {this.handleNewControl}>Textfield</div>
               </div>
             </div>
             <div className = "col s8 wireframe-container">
               <div className = "wireframe-display" onClick = {(e) =>this.handleClick(e)} style = {{height: this.state.height, width: this.state.width, transform: "scale("+this.state.zoom +")"}}>
                 
               {this.state.controls.map(control => (
-                <Control scale = {this.state.zoom} control = {control} key = {this.state.controls.indexOf(control)} id = {this.state.controls.indexOf(control)} onClick = {(e) => this.handleClick(e)}></Control>
+                <Control handleOnResizeDrag = {this.handleOnResizeDrag} selected = {control == this.state.selectedControl} scale = {this.state.zoom} control = {control} key = {this.state.controls.indexOf(control)} id = {this.state.controls.indexOf(control)} onClick = {(e) => this.handleClick(e)}></Control>
               ))}
               </div>
             </div>
