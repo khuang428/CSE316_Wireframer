@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { firebaseConnect, firestoreConnect } from 'react-redux-firebase';
+import { firebaseConnect} from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
-import { registerHandler } from '../../store/database/asynchHandler'
+import { registerHandler } from '../../store/database/asynchHandler';
 
 class RegisterScreen extends Component {
   state = {
@@ -24,10 +24,17 @@ class RegisterScreen extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { props, state } = this;
+    const { firebase } = props;
+    const newUser = { ...state };
 
     if(this.state.email == '' || this.state.password == '' || this.state.firstName == '' || this.state.lastName == ''){
       alert("Please fill out all the fields.");
       return;
+    }
+
+    if(!this.state.email.includes("@") || !this.state.email.includes(".")){
+      alert("Please enter a valid email.")
     }
 
     if(this.state.password.length < 6){
@@ -35,15 +42,13 @@ class RegisterScreen extends Component {
       return;
     }
 
-    const { props, state } = this;
-    const { firebase } = props;
-    const newUser = { ...state };
+    
 
     props.register(newUser, firebase);
   }
 
   render() {
-    const { auth, authError } = this.props;
+    const { auth} = this.props;
     if (auth.uid) {
       return <Redirect to="/" />;
     }
@@ -85,7 +90,6 @@ class RegisterScreen extends Component {
 
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
-  authError: state.auth.authError,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -94,5 +98,4 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   firebaseConnect(),
-  connect(mapStateToProps, mapDispatchToProps)
-)(RegisterScreen);
+  connect(mapStateToProps, mapDispatchToProps))(RegisterScreen);

@@ -118,7 +118,6 @@ class EditScreen extends Component{
     //duplicate
     if(e.ctrlKey && e.keyCode == 68 && this.state.selectedControl != null){
       e.preventDefault();
-      console.log("woop");
       let controlToDupe = this.state.selectedControl;
       let newControl = {
         position: [controlToDupe.position[0] + 100, controlToDupe.position[1] + 100],

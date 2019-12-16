@@ -23,7 +23,11 @@ export const registerHandler = (newUser, firebase) => (dispatch, getState, { get
     firebase.auth().createUserWithEmailAndPassword(
         newUser.email,
         newUser.password,
-    ).then(resp => firestore.collection('users').doc(resp.user.uid).set({
+    ).catch(function(error){
+      if(error.code == "auth/email-already-in-use"){
+        alert("An account with this email already exists. Please use a different email.");
+      }
+    }).then(resp => firestore.collection('users').doc(resp.user.uid).set({
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         initials: `${newUser.firstName[0]}${newUser.lastName[0]}`,
